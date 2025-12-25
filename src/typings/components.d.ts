@@ -105,7 +105,6 @@ declare global {
   const IconGridiconsFullscreenExit: typeof import('~icons/gridicons/fullscreen-exit')['default']
   const IconIcRoundPlus: typeof import('~icons/ic/round-plus')['default']
   const IconIcRoundDelete: typeof import('~icons/ic/round-delete')['default']
-  const IconIcRoundPlus: typeof import('~icons/ic/round-plus')['default']
   const IconIcRoundRefresh: typeof import('~icons/ic/round-refresh')['default']
   const IconIcRoundRemove: typeof import('~icons/ic/round-remove')['default']
   const IconIcRoundSearch: typeof import('~icons/ic/round-search')['default']
