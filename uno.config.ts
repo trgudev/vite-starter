@@ -14,6 +14,9 @@ export default defineConfig<Theme>({
   },
   theme: {
     ...themeVars,
+    fontFamily: {
+      sans: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+    },
     fontSize: {
       'icon-xs': '0.875rem',
       'icon-small': '1rem',

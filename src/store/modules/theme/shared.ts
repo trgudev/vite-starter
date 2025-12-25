@@ -248,26 +248,113 @@ export function getNaiveTheme(
   const theme: GlobalThemeOverrides = {
     common: {
       ...getNaiveThemeColors(colors, settings.recommendColor),
+      fontFamily: `'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif`,
+
+      // Base Radius
       borderRadius: `${settings.themeRadius}px`,
-      fontSizeMedium: '14px'
-    },
-    Input: {
-      heightMedium: '48px',
-      borderRadius: '8px'
+      borderRadiusSmall: `${Math.max(settings.themeRadius - 2, 4)}px`,
+
+      // Font Sizes
+      fontSizeTiny: '12px',
+      fontSizeSmall: '13px',
+      fontSizeMedium: '14px',
+      fontSizeLarge: '16px',
+      fontSizeHuge: '18px',
+
+      // Heights
+      heightTiny: '24px',
+      heightSmall: '32px',
+      heightMedium: '40px',
+      heightLarge: '48px',
+      heightHuge: '56px',
+
+      lineHeight: '1.5'
     },
     Button: {
-      heightMedium: '48px',
-      borderRadiusMedium: '8px',
-      fontWeight: '600'
+      // Tiny
+      heightTiny: '24px',
+      fontSizeTiny: '12px',
+      paddingTiny: '0 8px',
+      borderRadiusTiny: `${Math.max(settings.themeRadius - 2, 4)}px`,
+
+      // Small
+      heightSmall: '32px',
+      fontSizeSmall: '13px',
+      paddingSmall: '0 12px',
+      borderRadiusSmall: `${Math.max(settings.themeRadius - 1, 4)}px`,
+
+      // Medium
+      heightMedium: '40px',
+      fontSizeMedium: '14px',
+      paddingMedium: '0 16px',
+      borderRadiusMedium: `${settings.themeRadius}px`,
+
+      // Large
+      heightLarge: '48px',
+      fontSizeLarge: '16px',
+      paddingLarge: '0 24px',
+      borderRadiusLarge: `${settings.themeRadius}px`,
+
+      fontWeight: '500'
+    },
+    Input: {
+      heightTiny: '24px',
+      fontSizeTiny: '12px',
+
+      heightSmall: '32px',
+      fontSizeSmall: '13px',
+      borderRadiusSmall: `${Math.max(settings.themeRadius - 1, 4)}px`,
+
+      heightMedium: '40px',
+      fontSizeMedium: '14px',
+      borderRadius: `${settings.themeRadius}px`,
+
+      heightLarge: '48px',
+      fontSizeLarge: '16px',
+      borderRadiusLarge: `${settings.themeRadius}px`
+    },
+    Select: {
+      peers: {
+        InternalSelection: {
+          heightTiny: '24px',
+          fontSizeTiny: '12px',
+
+          heightSmall: '32px',
+          fontSizeSmall: '13px',
+
+          heightMedium: '40px',
+          fontSizeMedium: '14px',
+          borderRadius: `${settings.themeRadius}px`,
+
+          heightLarge: '48px',
+          fontSizeLarge: '16px'
+        }
+      }
     },
     Card: {
-      borderRadius: '12px'
-    },
-    Drawer: {
-      titleFontSize: '18px'
+      borderRadius: '12px',
+      boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)'
     },
     Modal: {
-      borderRadius: '12px'
+      borderRadius: '12px',
+      boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+    },
+    Drawer: {
+      titleFontSize: '18px',
+      boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+    },
+    Menu: {
+      borderRadius: '6px',
+      itemHeight: '40px'
+    },
+    Table: {
+      borderRadius: '8px',
+      thFontWeight: '600'
+    },
+    Tabs: {
+      tabGapMedium: '24px',
+      tabGapLarge: '32px',
+      tabGapSmall: '16px'
     }
   };
 
