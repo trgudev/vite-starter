@@ -19,6 +19,5 @@ export const getEnvJson = <T = any>(key: string, fallback?: T): T | undefined =>
 };
 
 // Usage example - export commonly used configs
-export const API_BASE_URL = getEnv('VITE_API_BASE_URL');
-export const SERVICE_BASE_URL = getEnv('VITE_SERVICE_BASE_URL');
+export const API_BASE_URL = getEnv('VITE_SERVICE_BASE_URL');
 export const OTHER_SERVICE_BASE_URL = getEnvJson<Record<string, string>>('VITE_OTHER_SERVICE_BASE_URL');
