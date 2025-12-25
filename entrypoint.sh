@@ -8,7 +8,6 @@ fi
 echo "" >> "$CONFIG_FILE"
 
 env | grep -E "^VITE_" | while read -r line; do
-  # 提取 KEY 和 VALUE
   key=${line%%=*}
   value=${line#*=}
 
