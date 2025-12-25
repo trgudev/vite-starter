@@ -1,6 +1,6 @@
 const local: App.I18n.Schema = {
   system: {
-    title: 'Soybean 管理系统',
+    title: 'Vite Starter',
     updateTitle: '系统版本更新通知',
     updateContent: '检测到系统有新版本发布，是否立即刷新页面？',
     updateConfirm: '立即刷新',
@@ -94,7 +94,7 @@ const local: App.I18n.Schema = {
         applySuccess: '预设应用成功',
         default: {
           name: '默认预设',
-          desc: 'Soybean 默认主题预设'
+          desc: 'Vite Starter 默认主题预设'
         },
         dark: {
           name: '暗色预设',
@@ -274,8 +274,6 @@ const local: App.I18n.Schema = {
       }
     },
     home: {
-      branchDesc:
-        '为了方便大家开发和更新合并，我们对main分支的代码进行了精简，只保留了首页菜单，其余内容已移至example分支进行维护。预览地址显示的内容即为example分支的内容。',
       greeting: '早安，{userName}, 今天又是充满活力的一天!',
       weatherDesc: '今日多云转晴，20℃ - 25℃!',
       projectCount: '项目数',
@@ -294,11 +292,11 @@ const local: App.I18n.Schema = {
       projectNews: {
         title: '项目动态',
         moreNews: '更多动态',
-        desc1: 'Soybean 在2021年5月28日创建了开源项目 soybean-admin!',
-        desc2: 'Yanbowe 向 soybean-admin 提交了一个bug，多标签栏不会自适应。',
-        desc3: 'Soybean 准备为 soybean-admin 的发布做充分的准备工作!',
-        desc4: 'Soybean 正在忙于为soybean-admin写项目说明文档！',
-        desc5: 'Soybean 刚才把工作台页面随便写了一些，凑合能看了！'
+        desc1: 'Vite Starter 在2021年5月28日创建了开源项目 Vite Starter!',
+        desc2: 'Yanbowe 向 Vite Starter 提交了一个bug，多标签栏不会自适应。',
+        desc3: 'Vite Starter 准备为 Vite Starter 的发布做充分的准备工作!',
+        desc4: 'Vite Starter 正在忙于为Vite Starter写项目说明文档！',
+        desc5: 'Vite Starter 刚才把工作台页面随便写了一些，凑合能看了！'
       },
       creativity: '创意'
     }

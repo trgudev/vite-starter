@@ -55,10 +55,6 @@ declare namespace App {
           /** Whether to show the multilingual */
           visible: boolean;
         };
-        globalSearch: {
-          /** Whether to show the GlobalSearch */
-          visible: boolean;
-        };
       };
       /** Tab */
       tab: {
@@ -526,7 +522,6 @@ declare namespace App {
           };
         };
         home: {
-          branchDesc: string;
           greeting: string;
           weatherDesc: string;
           projectCount: string;
