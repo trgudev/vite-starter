@@ -232,7 +232,6 @@ const local: App.I18n.Schema = {
     manage: 'System Manage',
     manage_user: 'User Manage',
     'manage_user-detail': 'User Detail',
-    manage_role: 'Role Manage',
     manage_menu: 'Menu Manage'
   },
   page: {
@@ -310,23 +309,6 @@ const local: App.I18n.Schema = {
           enable: 'Enable',
           disable: 'Disable'
         }
-      },
-      role: {
-        title: 'Role List',
-        roleName: 'Role Name',
-        roleCode: 'Role Code',
-        roleStatus: 'Role Status',
-        roleDesc: 'Role Description',
-        menuAuth: 'Menu Auth',
-        buttonAuth: 'Button Auth',
-        form: {
-          roleName: 'Please enter role name',
-          roleCode: 'Please enter role code',
-          roleStatus: 'Please select role status',
-          roleDesc: 'Please enter role description'
-        },
-        addRole: 'Add Role',
-        editRole: 'Edit Role'
       },
       user: {
         title: 'User List',
