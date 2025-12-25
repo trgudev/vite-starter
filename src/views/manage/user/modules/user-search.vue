@@ -52,7 +52,7 @@ async function search() {
   <NCard :bordered="false" size="small" class="card-wrapper">
     <NCollapse>
       <NCollapseItem :title="$t('common.search')" name="user-search">
-        <NForm ref="formRef" :model="model" :rules="rules" label-placement="left" :label-width="80">
+        <NForm ref="formRef" :model="model" :rules="rules" label-placement="left" :label-width="100">
           <NGrid responsive="screen" item-responsive>
             <NFormItemGi span="24 s:12 m:6" :label="$t('page.manage.user.userName')" path="userName" class="pr-24px">
               <NInput v-model:value="model.userName" :placeholder="$t('page.manage.user.form.userName')" />
