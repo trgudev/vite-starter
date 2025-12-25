@@ -11,6 +11,9 @@ importers:
       '@better-scroll/core':
         specifier: 2.5.1
         version: 2.5.1
+      '@iconify/utils':
+        specifier: ^3.1.0
+        version: 3.1.0
       '@iconify/vue':
         specifier: 5.0.0
         version: 5.0.0(vue@3.5.26(typescript@5.9.3))
