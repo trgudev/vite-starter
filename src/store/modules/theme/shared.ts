@@ -245,18 +245,29 @@ export function getNaiveTheme(
   settings: App.Theme.ThemeSetting,
   overrides?: GlobalThemeOverrides
 ) {
-  const { primary: colorLoading } = colors;
-
   const theme: GlobalThemeOverrides = {
     common: {
       ...getNaiveThemeColors(colors, settings.recommendColor),
-      borderRadius: `${settings.themeRadius}px`
+      borderRadius: `${settings.themeRadius}px`,
+      fontSizeMedium: '14px'
     },
-    LoadingBar: {
-      colorLoading
+    Input: {
+      heightMedium: '48px',
+      borderRadius: '8px'
     },
-    Tag: {
-      borderRadius: `${settings.themeRadius}px`
+    Button: {
+      heightMedium: '48px',
+      borderRadiusMedium: '8px',
+      fontWeight: '600'
+    },
+    Card: {
+      borderRadius: '12px'
+    },
+    Drawer: {
+      titleFontSize: '18px'
+    },
+    Modal: {
+      borderRadius: '12px'
     }
   };
 

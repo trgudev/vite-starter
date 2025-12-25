@@ -495,11 +495,6 @@ declare namespace App {
             rememberMe: string;
             forgetPassword: string;
             register: string;
-            otherAccountLogin: string;
-            otherLoginMode: string;
-            superAdmin: string;
-            admin: string;
-            user: string;
           };
           codeLogin: {
             title: string;

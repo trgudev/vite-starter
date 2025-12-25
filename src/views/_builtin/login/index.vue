@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import type { Component } from 'vue';
-import { getPaletteColorByNumber, mixColor } from '@sa/color';
+import { mixColor } from '@sa/color';
 import { loginModuleRecord } from '@/constants/app';
 import { useAppStore } from '@/store/modules/app';
 import { useThemeStore } from '@/store/modules/theme';
@@ -36,52 +36,77 @@ const moduleMap: Record<UnionKey.LoginModule, LoginModule> = {
 const activeModule = computed(() => moduleMap[props.module || 'pwd-login']);
 
 const bgThemeColor = computed(() =>
-  themeStore.darkMode ? getPaletteColorByNumber(themeStore.themeColor, 600) : themeStore.themeColor
+  themeStore.darkMode ? mixColor(themeStore.themeColor, '#000000', 0.5) : themeStore.themeColor
 );
-
-const bgColor = computed(() => {
-  const COLOR_WHITE = '#ffffff';
-
-  const ratio = themeStore.darkMode ? 0.5 : 0.2;
-
-  return mixColor(COLOR_WHITE, themeStore.themeColor, ratio);
-});
 </script>
 
 <template>
-  <div class="relative size-full flex-center overflow-hidden" :style="{ backgroundColor: bgColor }">
-    <WaveBg :theme-color="bgThemeColor" />
-    <NCard :bordered="false" class="relative z-4 w-auto rd-12px">
-      <div class="w-400px lt-sm:w-300px">
-        <header class="flex-y-center justify-between">
-          <SystemLogo class="text-64px text-primary lt-sm:text-48px" />
-          <h3 class="text-28px text-primary font-500 lt-sm:text-22px">{{ $t('system.title') }}</h3>
-          <div class="i-flex-col">
-            <ThemeSchemaSwitch
-              :theme-schema="themeStore.themeScheme"
-              :show-tooltip="false"
-              class="text-20px lt-sm:text-18px"
-              @switch="themeStore.toggleThemeScheme"
-            />
-            <LangSwitch
-              v-if="themeStore.header.multilingual.visible"
-              :lang="appStore.locale"
-              :lang-options="appStore.localeOptions"
-              :show-tooltip="false"
-              @change-lang="appStore.changeLocale"
-            />
+  <div class="relative size-full flex overflow-hidden bg-white dark:bg-[#121212]">
+    <!-- Left Side: Brand Area (Hidden on mobile) -->
+    <div class="relative hidden h-full w-1/2 flex-col items-center justify-center overflow-hidden md:flex">
+      <!-- Gradient Overlay -->
+      <div class="absolute inset-0 z-10 from-primary/90 to-primary/70 bg-gradient-to-br"></div>
+      <!-- Wave Background -->
+      <WaveBg :theme-color="bgThemeColor" class="absolute inset-0 z-0" />
+
+      <!-- Content -->
+      <div class="relative z-20 flex flex-col items-center gap-6 p-10 text-white">
+        <!-- Logo Wrapper with glass effect -->
+        <div class="size-120px flex-center border border-white/20 rounded-3xl bg-white/20 shadow-xl backdrop-blur-sm">
+          <SystemLogo class="text-64px text-white" />
+        </div>
+
+        <div class="max-w-lg text-center">
+          <h2 class="mb-4 text-42px font-bold leading-tight tracking-wide">{{ $t('system.title') }}</h2>
+          <p class="text-18px text-white/90 font-light leading-relaxed">
+            A fresh and elegant admin template based on Vite 7, TypeScript and Naive UI.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Side: Login Form -->
+    <div class="relative h-full flex flex-col flex-1 bg-white dark:bg-[#18181c]">
+      <!-- Header Utility (Top Right) -->
+      <header class="absolute right-0 top-0 z-50 flex items-center gap-4 p-6">
+        <ThemeSchemaSwitch
+          :theme-schema="themeStore.themeScheme"
+          class="cursor-pointer text-20px text-gray-500 transition-colors hover:text-primary"
+          @switch="themeStore.toggleThemeScheme"
+        />
+        <LangSwitch
+          v-if="themeStore.header.multilingual.visible"
+          :lang="appStore.locale"
+          :lang-options="appStore.localeOptions"
+          class="cursor-pointer text-20px text-gray-500 transition-colors hover:text-primary"
+          @change-lang="appStore.changeLocale"
+        />
+      </header>
+
+      <!-- Main Content Center -->
+      <div class="flex-center flex-1 overflow-y-auto">
+        <div class="max-w-420px w-full px-8 py-12">
+          <!-- Mobile Logo (Hidden on Desktop) -->
+          <div class="mb-10 flex flex-col items-center gap-4 md:hidden">
+            <SystemLogo class="text-48px text-primary" />
+            <h3 class="text-24px text-primary font-bold">{{ $t('system.title') }}</h3>
           </div>
-        </header>
-        <main class="pt-24px">
-          <h3 class="text-18px text-primary font-medium">{{ $t(activeModule.label) }}</h3>
-          <div class="pt-24px">
+
+          <!-- Welcome Text -->
+          <div class="mb-10 text-left">
+            <h3 class="mb-3 text-32px text-gray-900 font-bold dark:text-white">{{ $t(activeModule.label) }}</h3>
+            <p class="text-16px text-gray-500 font-medium">Welcome back! Please enter your details.</p>
+          </div>
+
+          <!-- Transition Wrapper for Form -->
+          <div class="login-form-wrapper w-full">
             <Transition :name="themeStore.page.animateMode" mode="out-in" appear>
               <component :is="activeModule.component" />
             </Transition>
           </div>
-        </main>
+        </div>
       </div>
-    </NCard>
+    </div>
   </div>
 </template>
 
