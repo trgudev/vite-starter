@@ -10,6 +10,8 @@ declare namespace Env {
   /** Interface for import.meta */
   // eslint-disable-next-line @typescript-eslint/no-shadow
   interface ImportMeta extends ImportMetaEnv {
+    /** The base url of the application */
+    readonly VITE_BASE_URL: string;
     /** The title of the application */
     readonly VITE_APP_TITLE: string;
     /** The router history mode */
@@ -22,6 +24,8 @@ declare namespace Env {
      * This prefix is start with the icon prefix
      */
     readonly VITE_ICON_LOCAL_PREFIX: 'icon-local';
+    /** backend service base url */
+    readonly VITE_SERVICE_BASE_URL: string;
     /**
      * success code of backend service
      *
@@ -86,6 +90,8 @@ declare namespace Env {
      * Iconify icon name
      */
     readonly VITE_MENU_ICON: string;
+    /** Whether to build with sourcemap */
+    readonly VITE_SOURCE_MAP?: CommonType.YesOrNo;
     /**
      * Iconify api provider url
      *

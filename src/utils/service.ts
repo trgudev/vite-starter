@@ -1,5 +1,4 @@
 import json5 from 'json5';
-import { getEnv, getEnvJson } from '@/utils/env';
 
 /**
  * Create service config by current env
@@ -7,17 +6,14 @@ import { getEnv, getEnvJson } from '@/utils/env';
  * @param env The current env
  */
 export function createServiceConfig(env: Env.ImportMeta) {
-  // Use runtime injected environment variables, fallback to build-time environment variables
-  const VITE_SERVICE_BASE_URL = getEnv('VITE_SERVICE_BASE_URL') || env.BASE_URL;
-  const VITE_OTHER_SERVICE_BASE_URL = getEnv('VITE_OTHER_SERVICE_BASE_URL') || env.BASE_URL;
+  const { VITE_SERVICE_BASE_URL, VITE_OTHER_SERVICE_BASE_URL } = env;
 
   let other = {} as Record<App.Service.OtherBaseURLKey, string>;
   try {
-    // Prioritize runtime JSON parsing, fallback to json5 parsing build-time configuration
-    other = getEnvJson('VITE_OTHER_SERVICE_BASE_URL') || json5.parse(VITE_OTHER_SERVICE_BASE_URL);
+    other = json5.parse(VITE_OTHER_SERVICE_BASE_URL);
   } catch {
     // eslint-disable-next-line no-console
-    console.error('VITE_OTHER_SERVICE_BASE_URL is not a valid json string');
+    console.error('VITE_OTHER_SERVICE_BASE_URL is not a valid json5 string');
   }
 
   const httpConfig: App.Service.SimpleServiceConfig = {
