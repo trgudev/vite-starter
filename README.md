@@ -218,5 +218,3 @@ VITE_BASE_API_URL=https://api.example.com
 - [VueUse](https://vueuse.org/)
 
 ---
-
-Made with ❤️ by [Your Name]
