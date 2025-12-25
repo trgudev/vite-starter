@@ -101,7 +101,7 @@ init();
 </script>
 
 <template>
-  <NCard :bordered="false" class="card-wrapper">
+  <NCard :bordered="false" class="rounded-12px shadow-sm transition-shadow duration-300 hover:shadow-md">
     <div ref="domRef" class="h-360px overflow-hidden"></div>
   </NCard>
 </template>

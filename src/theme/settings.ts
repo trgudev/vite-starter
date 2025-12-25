@@ -32,7 +32,7 @@ export const themeSettings: App.Theme.ThemeSetting = {
     }
   },
   tab: {
-    visible: true,
+    visible: false,
     cache: true,
     height: 44,
     mode: 'chrome',
@@ -41,7 +41,7 @@ export const themeSettings: App.Theme.ThemeSetting = {
   fixedHeaderAndTab: true,
   sider: {
     inverted: false,
-    width: 220,
+    width: 240,
     collapsedWidth: 64,
     mixWidth: 90,
     mixCollapsedWidth: 64,
@@ -65,14 +65,14 @@ export const themeSettings: App.Theme.ThemeSetting = {
     light: {
       colors: {
         container: 'rgb(255, 255, 255)',
-        layout: 'rgb(247, 250, 252)',
+        layout: 'rgb(249, 250, 251)',
         inverted: 'rgb(0, 20, 40)',
         'base-text': 'rgb(31, 31, 31)'
       },
       boxShadow: {
-        header: '0 1px 2px rgb(0, 21, 41, 0.08)',
-        sider: '2px 0 8px 0 rgb(29, 35, 41, 0.05)',
-        tab: '0 1px 2px rgb(0, 21, 41, 0.08)'
+        header: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+        sider: '1px 0 2px 0 rgba(0, 0, 0, 0.05)',
+        tab: '0 1px 2px 0 rgba(0, 0, 0, 0.05)'
       }
     },
     dark: {

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useAppStore } from '@/store/modules/app';
 import { useAuthStore } from '@/store/modules/auth';
 import ProjectAvatar from '@/components/custom/project-avatar.vue';
 import { $t } from '@/locales';
@@ -9,10 +8,7 @@ defineOptions({
   name: 'HeaderBanner'
 });
 
-const appStore = useAppStore();
 const authStore = useAuthStore();
-
-const gap = computed(() => (appStore.isMobile ? 0 : 16));
 
 interface StatisticData {
   id: number;
@@ -40,26 +36,26 @@ const statisticData = computed<StatisticData[]>(() => [
 </script>
 
 <template>
-  <NCard :bordered="false" class="card-wrapper">
-    <NGrid :x-gap="gap" :y-gap="16" responsive="screen" item-responsive>
-      <NGi span="24 s:24 m:18">
-        <div class="flex-y-center">
-          <ProjectAvatar class="size-72px shrink-0" />
-          <div class="pl-12px">
-            <h3 class="text-18px font-semibold">
-              {{ $t('page.home.greeting', { userName: authStore.userInfo.userName }) }}
-            </h3>
-            <p class="text-#999 leading-30px">{{ $t('page.home.weatherDesc') }}</p>
-          </div>
+  <div class="px-12px">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-16px">
+        <ProjectAvatar class="size-64px shrink-0 rounded-full bg-primary/10 p-4px" />
+        <div>
+          <h3 class="text-24px text-[var(--n-text-color)] font-600">
+            {{ $t('page.home.greeting', { userName: authStore.userInfo.userName }) }}
+          </h3>
+          <p class="mt-4px text-14px text-gray-500">{{ $t('page.home.weatherDesc') }}</p>
         </div>
-      </NGi>
-      <NGi span="24 s:24 m:6">
-        <NSpace :size="24" justify="end">
-          <NStatistic v-for="item in statisticData" :key="item.id" class="whitespace-nowrap" v-bind="item" />
-        </NSpace>
-      </NGi>
-    </NGrid>
-  </NCard>
+      </div>
+
+      <NSpace :size="32" class="hidden sm:flex">
+        <div v-for="item in statisticData" :key="item.id" class="flex flex-col items-end">
+          <span class="mb-4px text-12px text-gray-400">{{ item.label }}</span>
+          <span class="text-20px text-[var(--n-text-color)] font-600">{{ item.value }}</span>
+        </div>
+      </NSpace>
+    </div>
+  </div>
 </template>
 
 <style scoped></style>
