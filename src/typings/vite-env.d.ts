@@ -90,8 +90,6 @@ declare namespace Env {
      * Iconify icon name
      */
     readonly VITE_MENU_ICON: string;
-    /** Whether to build with sourcemap */
-    readonly VITE_SOURCE_MAP?: CommonType.YesOrNo;
     /**
      * Iconify api provider url
      *

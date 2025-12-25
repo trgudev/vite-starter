@@ -42,7 +42,7 @@ export default defineConfig(configEnv => {
     },
     build: {
       reportCompressedSize: false,
-      sourcemap: viteEnv.VITE_SOURCE_MAP === 'Y',
+      sourcemap: false,
       commonjsOptions: {
         ignoreTryCatch: false
       }
