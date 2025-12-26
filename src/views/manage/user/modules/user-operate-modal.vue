@@ -7,7 +7,7 @@ import { useFormRules, useNaiveForm } from '@/hooks/common/form';
 import { $t } from '@/locales';
 
 defineOptions({
-  name: 'UserOperateDrawer'
+  name: 'UserOperateModal'
 });
 
 interface Props {
@@ -98,7 +98,7 @@ function handleInitModel() {
   }
 }
 
-function closeDrawer() {
+function closeModal() {
   visible.value = false;
 }
 
@@ -106,7 +106,7 @@ async function handleSubmit() {
   await validate();
   // request
   window.$message?.success($t('common.updateSuccess'));
-  closeDrawer();
+  closeModal();
   emit('submitted');
 }
 
@@ -120,48 +120,55 @@ watch(visible, () => {
 </script>
 
 <template>
-  <NDrawer v-model:show="visible" display-directive="show" :width="360">
-    <NDrawerContent :title="title" :native-scrollbar="false" closable>
-      <NForm ref="formRef" :model="model" :rules="rules">
-        <NFormItem :label="$t('page.manage.user.userName')" path="userName">
-          <NInput v-model:value="model.userName" :placeholder="$t('page.manage.user.form.userName')" />
-        </NFormItem>
-        <NFormItem :label="$t('page.manage.user.userGender')" path="userGender">
-          <NRadioGroup v-model:value="model.userGender">
-            <NRadio v-for="item in userGenderOptions" :key="item.value" :value="item.value" :label="$t(item.label)" />
-          </NRadioGroup>
-        </NFormItem>
-        <NFormItem :label="$t('page.manage.user.nickName')" path="nickName">
-          <NInput v-model:value="model.nickName" :placeholder="$t('page.manage.user.form.nickName')" />
-        </NFormItem>
-        <NFormItem :label="$t('page.manage.user.userPhone')" path="userPhone">
-          <NInput v-model:value="model.userPhone" :placeholder="$t('page.manage.user.form.userPhone')" />
-        </NFormItem>
-        <NFormItem :label="$t('page.manage.user.userEmail')" path="email">
-          <NInput v-model:value="model.userEmail" :placeholder="$t('page.manage.user.form.userEmail')" />
-        </NFormItem>
-        <NFormItem :label="$t('page.manage.user.userStatus')" path="status">
-          <NRadioGroup v-model:value="model.status">
-            <NRadio v-for="item in enableStatusOptions" :key="item.value" :value="item.value" :label="$t(item.label)" />
-          </NRadioGroup>
-        </NFormItem>
-        <NFormItem :label="$t('page.manage.user.userRole')" path="roles">
-          <NSelect
-            v-model:value="model.userRoles"
-            multiple
-            :options="roleOptions"
-            :placeholder="$t('page.manage.user.form.userRole')"
-          />
-        </NFormItem>
+  <NModal v-model:show="visible" :title="title" preset="card" class="w-800px">
+    <NScrollbar class="h-480px pr-20px">
+      <NForm ref="formRef" :model="model" :rules="rules" label-placement="left" :label-width="100">
+        <NGrid responsive="screen" item-responsive>
+          <NFormItemGi span="24 m:12" :label="$t('page.manage.user.userName')" path="userName">
+            <NInput v-model:value="model.userName" :placeholder="$t('page.manage.user.form.userName')" />
+          </NFormItemGi>
+          <NFormItemGi span="24 m:12" :label="$t('page.manage.user.nickName')" path="nickName">
+            <NInput v-model:value="model.nickName" :placeholder="$t('page.manage.user.form.nickName')" />
+          </NFormItemGi>
+          <NFormItemGi span="24 m:12" :label="$t('page.manage.user.userPhone')" path="userPhone">
+            <NInput v-model:value="model.userPhone" :placeholder="$t('page.manage.user.form.userPhone')" />
+          </NFormItemGi>
+          <NFormItemGi span="24 m:12" :label="$t('page.manage.user.userEmail')" path="email">
+            <NInput v-model:value="model.userEmail" :placeholder="$t('page.manage.user.form.userEmail')" />
+          </NFormItemGi>
+          <NFormItemGi span="24 m:12" :label="$t('page.manage.user.userGender')" path="userGender">
+            <NRadioGroup v-model:value="model.userGender">
+              <NRadio v-for="item in userGenderOptions" :key="item.value" :value="item.value" :label="$t(item.label)" />
+            </NRadioGroup>
+          </NFormItemGi>
+          <NFormItemGi span="24 m:12" :label="$t('page.manage.user.userStatus')" path="status">
+            <NRadioGroup v-model:value="model.status">
+              <NRadio
+                v-for="item in enableStatusOptions"
+                :key="item.value"
+                :value="item.value"
+                :label="$t(item.label)"
+              />
+            </NRadioGroup>
+          </NFormItemGi>
+          <NFormItemGi span="24" :label="$t('page.manage.user.userRole')" path="roles">
+            <NSelect
+              v-model:value="model.userRoles"
+              multiple
+              :options="roleOptions"
+              :placeholder="$t('page.manage.user.form.userRole')"
+            />
+          </NFormItemGi>
+        </NGrid>
       </NForm>
-      <template #footer>
-        <NSpace :size="16">
-          <NButton @click="closeDrawer">{{ $t('common.cancel') }}</NButton>
-          <NButton type="primary" @click="handleSubmit">{{ $t('common.confirm') }}</NButton>
-        </NSpace>
-      </template>
-    </NDrawerContent>
-  </NDrawer>
+    </NScrollbar>
+    <template #footer>
+      <NSpace justify="end" :size="16">
+        <NButton @click="closeModal">{{ $t('common.cancel') }}</NButton>
+        <NButton type="primary" @click="handleSubmit">{{ $t('common.confirm') }}</NButton>
+      </NSpace>
+    </template>
+  </NModal>
 </template>
 
 <style scoped></style>

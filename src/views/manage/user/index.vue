@@ -6,7 +6,7 @@ import { fetchGetUserList } from '@/service/api';
 import { useAppStore } from '@/store/modules/app';
 import { defaultTransform, useNaivePaginatedTable, useTableOperate } from '@/hooks/common/table';
 import { $t } from '@/locales';
-import UserOperateDrawer from './modules/user-operate-drawer.vue';
+import UserOperateModal from './modules/user-operate-modal.vue';
 import UserSearch from './modules/user-search.vue';
 
 const appStore = useAppStore();
@@ -190,7 +190,7 @@ function edit(id: number) {
         :pagination="mobilePagination"
         class="sm:h-full"
       />
-      <UserOperateDrawer
+      <UserOperateModal
         v-model:visible="drawerVisible"
         :operate-type="operateType"
         :row-data="editingData"
