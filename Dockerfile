@@ -35,10 +35,10 @@ COPY entrypoint.sh /entrypoint.sh
 
 RUN apk add --no-cache curl && chmod +x /entrypoint.sh
 
-EXPOSE 80
+EXPOSE 3000
 
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-  CMD curl -fs -o /dev/null http://localhost/ || exit 1
+  CMD curl -fs -o /dev/null http://localhost:3000/ || exit 1
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["nginx", "-g", "daemon off;"]
